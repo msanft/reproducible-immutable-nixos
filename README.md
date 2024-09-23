@@ -19,6 +19,8 @@ considered a one-size-fits-most approach, and tweaked per use-case.
 ```sh
 # Build the GPT disk image
 nix build .#qemu-image
+# Verify reproducibility
+nix build .#qemu-image --keep-failed --rebuild
 # Boot it in QEMU
 nix run .#boot-uefi-qemu -- ./result/image_0.0.1.raw
 ```
