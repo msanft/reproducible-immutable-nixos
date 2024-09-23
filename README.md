@@ -28,7 +28,7 @@ nix run .#boot-uefi-qemu -- ./result/image_0.0.1.raw
 ## Features
 
 - Measured boot with [UKI](https://github.com/uapi-group/specifications/blob/main/specs/unified_kernel_image.md)
-- Read-only root partition, integrity-protected by [dm-verity](https://docs.kernel.org/admin-guide/device-mapper/verity.html)\
+- Read-only root partition, integrity-protected by [dm-verity](https://docs.kernel.org/admin-guide/device-mapper/verity.html)
     - Filesystem integrity is embedded into PCR values through kernel command line (`roothash=`)
     - System integrity is verifiable through TPM remote attestation
 - Bootable image built with [systemd-repart](https://www.freedesktop.org/software/systemd/man/latest/systemd-repart.html)
