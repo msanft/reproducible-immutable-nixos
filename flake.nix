@@ -3,29 +3,22 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
-
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-    }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "riscv64-linux"
+      ];
+      perSystem = { config, pkgs, ... }: {
         packages = {
           qemu-image = pkgs.callPackage ./image {
             platform = "qemu";
           };
-
           boot-uefi-qemu = pkgs.callPackage ./utils/boot-uefi-qemu.nix { };
         };
-      }
-    );
+      };
+    };
 }
