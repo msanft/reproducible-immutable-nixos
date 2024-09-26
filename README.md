@@ -1,6 +1,6 @@
 # Building reproducible and immutable NixOS images
 
-This is the accompanying repository for my All Systems Go 2024 talk with the same name.
+This is the accompanying repository for my [All Systems Go 2024 talk with the same name](https://www.youtube.com/watch?v=YAl27ciB6c8).
 
 > [!IMPORTANT]
 > This repository is not meant for direct consumption via this Flake. Outputs may and will be unstable. It is rather meant as
